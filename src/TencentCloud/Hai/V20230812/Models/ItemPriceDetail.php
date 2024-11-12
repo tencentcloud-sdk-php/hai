@@ -18,47 +18,59 @@ namespace TencentCloud\Hai\V20230812\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * 费用数据结构体
+ * 分实例价格
  *
- * @method ItemPrice getInstancePrice() 获取实例价格信息
+ * @method string getInstanceId() 获取实例id
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setInstancePrice(ItemPrice $InstancePrice) 设置实例价格信息
+ * @method void setInstanceId(string $InstanceId) 设置实例id
 注意：此字段可能返回 null，表示取不到有效值。
- * @method ItemPrice getCloudDiskPrice() 获取云盘价格信息
+ * @method ItemPrice getInstancePrice() 获取实例价格详情
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setCloudDiskPrice(ItemPrice $CloudDiskPrice) 设置云盘价格信息
+ * @method void setInstancePrice(ItemPrice $InstancePrice) 设置实例价格详情
 注意：此字段可能返回 null，表示取不到有效值。
- * @method array getPriceDetailSet() 获取分实例价格
+ * @method ItemPrice getCloudDiskPrice() 获取磁盘价格详情
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setPriceDetailSet(array $PriceDetailSet) 设置分实例价格
+ * @method void setCloudDiskPrice(ItemPrice $CloudDiskPrice) 设置磁盘价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method ItemPrice getInstanceTotalPrice() 获取该实例的总价钱
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setInstanceTotalPrice(ItemPrice $InstanceTotalPrice) 设置该实例的总价钱
 注意：此字段可能返回 null，表示取不到有效值。
  */
-class Price extends AbstractModel
+class ItemPriceDetail extends AbstractModel
 {
     /**
-     * @var ItemPrice 实例价格信息
+     * @var string 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $InstanceId;
+
+    /**
+     * @var ItemPrice 实例价格详情
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $InstancePrice;
 
     /**
-     * @var ItemPrice 云盘价格信息
+     * @var ItemPrice 磁盘价格详情
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $CloudDiskPrice;
 
     /**
-     * @var array 分实例价格
+     * @var ItemPrice 该实例的总价钱
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $PriceDetailSet;
+    public $InstanceTotalPrice;
 
     /**
-     * @param ItemPrice $InstancePrice 实例价格信息
+     * @param string $InstanceId 实例id
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param ItemPrice $CloudDiskPrice 云盘价格信息
+     * @param ItemPrice $InstancePrice 实例价格详情
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param array $PriceDetailSet 分实例价格
+     * @param ItemPrice $CloudDiskPrice 磁盘价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param ItemPrice $InstanceTotalPrice 该实例的总价钱
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -74,6 +86,10 @@ class Price extends AbstractModel
         if ($param === null) {
             return;
         }
+        if (array_key_exists("InstanceId",$param) and $param["InstanceId"] !== null) {
+            $this->InstanceId = $param["InstanceId"];
+        }
+
         if (array_key_exists("InstancePrice",$param) and $param["InstancePrice"] !== null) {
             $this->InstancePrice = new ItemPrice();
             $this->InstancePrice->deserialize($param["InstancePrice"]);
@@ -84,13 +100,9 @@ class Price extends AbstractModel
             $this->CloudDiskPrice->deserialize($param["CloudDiskPrice"]);
         }
 
-        if (array_key_exists("PriceDetailSet",$param) and $param["PriceDetailSet"] !== null) {
-            $this->PriceDetailSet = [];
-            foreach ($param["PriceDetailSet"] as $key => $value){
-                $obj = new ItemPriceDetail();
-                $obj->deserialize($value);
-                array_push($this->PriceDetailSet, $obj);
-            }
+        if (array_key_exists("InstanceTotalPrice",$param) and $param["InstanceTotalPrice"] !== null) {
+            $this->InstanceTotalPrice = new ItemPrice();
+            $this->InstanceTotalPrice->deserialize($param["InstanceTotalPrice"]);
         }
     }
 }
