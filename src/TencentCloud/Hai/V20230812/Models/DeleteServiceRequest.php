@@ -20,18 +20,18 @@ use TencentCloud\Common\AbstractModel;
 /**
  * DeleteService请求参数结构体
  *
- * @method string getServiceId() 获取服务ID
- * @method void setServiceId(string $ServiceId) 设置服务ID
+ * @method string getServiceId() 获取<p>服务ID</p>
+ * @method void setServiceId(string $ServiceId) 设置<p>服务ID</p>
  */
 class DeleteServiceRequest extends AbstractModel
 {
     /**
-     * @var string 服务ID
+     * @var string <p>服务ID</p>
      */
     public $ServiceId;
 
     /**
-     * @param string $ServiceId 服务ID
+     * @param string $ServiceId <p>服务ID</p>
      */
     function __construct()
     {
